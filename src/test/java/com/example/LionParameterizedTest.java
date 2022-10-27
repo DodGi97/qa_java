@@ -36,12 +36,8 @@ public class LionParameterizedTest {
     }
 
     @Test
-    public void doesHaveManeReturnsProperBoolean() {
-        try {
+    public void doesHaveManeReturnsProperBoolean() throws Exception {
             lion = new Lion(lionSex, feline);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
         Assert.assertEquals("Ожидалось " + expectedResult, expectedResult, lion.doesHaveMane());
     }
 }

@@ -26,23 +26,12 @@ public class CatTest {
 
     @Test
     public void shouldReturnMeow() {
-        Cat cat = new Cat(feline);
         assertEquals("Кошка не говорит 'Мяу'", cat.getSound(), "Мяу");
     }
 
     @Test
-    public void shouldReturnMeowNegative() {
-        Cat cat = new Cat(feline);
-        Assert.assertNotEquals("Кошка не говорит 'Гав'", cat.getSound(), "Гав");
-    }
-
-    @Test
-    public void getReturnsListOfPredatorFood(){
-        try {
+    public void getReturnsListOfPredatorFood() throws Exception {
             Mockito.when(feline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
             Assert.assertEquals("Ожидался рацион хищника", List.of("Животные", "Птицы", "Рыба"), cat.getFood());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 }

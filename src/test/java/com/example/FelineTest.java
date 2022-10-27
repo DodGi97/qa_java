@@ -12,27 +12,22 @@ public class FelineTest {
 
     @Before
     public void init() {
-        this.feline = new Feline();
+        feline = new Feline();
     }
 
     @Test
-    public void eatMeatReturnsListOfPredatorFood() {
-        try {
-            Assert.assertEquals("Ожидался рацион хищника",
-                    List.of("Животные", "Птицы", "Рыба"), feline.eatMeat());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public void eatMeatReturnsListOfPredatorFood() throws Exception {
+            Assert.assertEquals("Ожидался рацион хищника", List.of("Животные", "Птицы", "Рыба"), feline.eatMeat());
     }
 
     @Test
     public void getKittensWithNoArgumentReturns1() {
-        Assert.assertEquals("Ожидалось 1", 1, feline.getKittens());
+        Assert.assertEquals( 1, feline.getKittens());
     }
 
     @Test
     public void getKittens1Returns1() {
-        Assert.assertEquals("Ожидалось 1", 1, feline.getKittens(1));
+        Assert.assertEquals( 1, feline.getKittens(1));
     }
 
     @Test

@@ -11,38 +11,27 @@ import java.util.List;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LionTest {
+    private final List<String> LIST_EXPECTED = List.of("Животные", "Птицы", "Рыба");
     @Mock
     Feline feline;
     Lion lion;
 
     @Test
-    public void getKittensReturnsFelineKittensCount() {
-        try {
+    public void getKittensReturnsFelineKittensCount() throws Exception {
             lion = new Lion("Самец", feline);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
         Mockito.when(feline.getKittens()).thenReturn(5);
         Assert.assertEquals("Ожидалось 5", 5, lion.getKittens());
     }
 
     @Test
-    public void getFoodReturnsListOfPredatorFood() {
-        try {
+    public void getFoodReturnsListOfPredatorFood() throws Exception {
             lion = new Lion("Самка", feline);
-            Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-            Assert.assertEquals("Ожидался рацион хищника", List.of("Животные", "Птицы", "Рыба"), lion.getFood());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+            Mockito.when(feline.getFood("Хищник")).thenReturn(LIST_EXPECTED);
+            Assert.assertEquals("Ожидался рацион хищника", LIST_EXPECTED, lion.getFood());
     }
 
     @Test(expected = Exception.class)
-    public void constructorWrongLionSexReturnsException() {
-        try {
+    public void constructorWrongLionSexReturnsException() throws Exception {
             lion = new Lion("Undefined", feline);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 }
